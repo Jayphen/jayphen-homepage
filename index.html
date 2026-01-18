@@ -43,6 +43,11 @@
     h1 span {
       border-bottom: 1px dotted #c0c0c0;
       cursor: help;
+      transition: opacity 0.5s ease-in-out;
+    }
+
+    h1 span.fade-out {
+      opacity: 0;
     }
 
     a {
@@ -72,7 +77,7 @@
 
   <main>
     <h1>
-      Hi, I'm <span title="Little-known fact: Jayphen is actually my nickname; my real name is Stephen">Jayphen</span>
+      Hi, I'm <span id="name" title="Little-known fact: Jayphen is actually my nickname; my real name is Stephen">Jayphen</span>
     </h1>
 
     <p>Hello! 👋</p>
@@ -86,5 +91,17 @@
       <li><a href="https://github.com/Jayphen">Github @jayphen</a></li>
     </ul>
   </main>
+
+  <script>
+    setTimeout(() => {
+      const nameEl = document.getElementById('name');
+      nameEl.classList.add('fade-out');
+      
+      setTimeout(() => {
+        nameEl.textContent = 'Stephen';
+        nameEl.classList.remove('fade-out');
+      }, 500);
+    }, 5000);
+  </script>
 </body>
 </html>
